@@ -3,66 +3,66 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
 class TaskController extends Controller
 {
+
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
         return TaskResource::collection(Task::all());
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @return TaskResource
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         $task = Task::create($request->validated());
 
         return new TaskResource($task);
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param Task $task
+     * @return TaskResource
      */
     public function show(Task $task)
     {
         return new TaskResource($task);
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @param Task $task
+     * @return TaskResource
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
         $task->update($request->validated());
 
         return new TaskResource($task);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Task  $task
-     * @return \Illuminate\Http\Response
+     * @param Task $task
+     * @return Application|ResponseFactory|Response
      */
     public function destroy(Task $task)
     {
