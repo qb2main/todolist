@@ -7,22 +7,22 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TaskFinished implements  ShouldBroadcast
+class TaskFinishedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $task_id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($task_id)
+    public function __construct()
     {
-        $this->task_id = $task_id;
+        //
     }
 
     /**
@@ -32,6 +32,6 @@ class TaskFinished implements  ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('my_task_channel');
+        return new Channel('mytaskchannel');
     }
 }

@@ -87,11 +87,13 @@ export default {
     mounted() {
         this.initialize();
 
-        window.Echo.channel('my_task_channel')
-            .listen('TaskFinished', ({source_file_id}) => {
+        window.Echo.channel('mytaskchannel')
+            .listen('TaskFinishedEvent', (e) => {
                 //do something
+                console.log(e);
                 this.getTasks();
-            });
+            })
+            .error((err) => {console.log(err)});
     },
 
     methods: {
