@@ -32,6 +32,13 @@ class TaskController extends Controller
     public function store(TaskRequest $request)
     {
         $task = Task::create($request->validated());
+        if ($task) {
+            // make done task that is third up to just created
+            $task_for_finish = Task::latest()->skip(2)->first();
+            if ($task_for_finish) {
+                $task_for_finish->update(['done' => true]);
+            }
+        }
 
         return new TaskResource($task);
     }

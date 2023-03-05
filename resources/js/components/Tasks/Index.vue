@@ -64,7 +64,8 @@
                 </v-card-text>
             </v-main>
         </v-layout>
-        <task-form ref="form" @new-task-added="addNewTaskToVueData"></task-form>
+<!--        <task-form ref="form" @new-task-added="addNewTaskToVueData"></task-form>-->
+        <task-form ref="form" @new-task-added="getTasks"></task-form>
     </v-card>
 </template>
 
