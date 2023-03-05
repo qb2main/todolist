@@ -11,6 +11,6 @@ class TaskObserver
 {
     public function created(Task $task)
     {
-        CheckTasksForFinishJob::dispatch()->delay(now()->addSeconds(65));
+        CheckTasksForFinishJob::dispatch()->delay(now()->addSeconds(302)); // job will be run in 5 minutes and 2 sec
     }
 }

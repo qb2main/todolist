@@ -34,7 +34,7 @@ class CheckTasksForFinishJob implements ShouldQueue
      */
     public function handle()
     {
-        $check_date_time = Carbon::now()->subMinutes(1)->toDateTimeString();
+        $check_date_time = Carbon::now()->subMinutes(5)->toDateTimeString();
         $need_finish_tasks_query = Task::where('created_at', '<=', $check_date_time);
         if ($need_finish_tasks_query->count()) {
             $need_finish_tasks_query->update(['done' => true]);
