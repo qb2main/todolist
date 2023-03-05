@@ -17,6 +17,8 @@
     "dependencies": {
         "@mdi/font": "^7.1.96",
         "@vitejs/plugin-vue": "^4.0.0",
+        "laravel-echo": "^1.15.0",
+        "socket.io-client": "^4.6.1",
         "vue": "^3.2.47",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.1.6",
