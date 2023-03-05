@@ -7,6 +7,8 @@ import App from './components/Tasks/Index.vue'
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css'
 
+import TaskForm from './components/Tasks/Form.vue'
+
 const app = createApp(App)
 
 // Vuetify
@@ -24,6 +26,7 @@ const vuetify = createVuetify({
 
 app.use(vuetify)
 app.use(VueRouter)
+app.component('task-form', TaskForm)
 app.mount('#app')
 
 
